@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        #quote {
+            font-size: 1.8em;
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 20px;
+            transition: transform 0.3s;
+        }
+        #quote.fade-in {
+            transform: scale(1.05);
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        button:hover {
+            transform: scale(1.1);
+            background-color: #ff4b4b;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Random Quote Generator</h1>
+    <div id="quote">Click the button to get a quote!</div>
+    <button onclick="generateRandomQuote()">Get Random Quote</button>
+
+    <script>
+        // Step 1: Create an Array of Quotes
+        const quotes = [
+            "The only limit to our realization of tomorrow is our doubts of today. – Franklin D. Roosevelt",
+            "In the end, we will remember not the words of our enemies, but the silence of our friends. – Martin Luther King Jr.",
+            "Do not go where the path may lead, go instead where there is no path and leave a trail. – Ralph Waldo Emerson",
+            "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill",
+            "Believe you can and you're halfway there. – Theodore Roosevelt",
+            "The journey of a thousand miles begins with one step. – Lao Tzu",
+            "Your time is limited, don't waste it living someone else's life. – Steve Jobs",
+            "Life is what happens when you're busy making other plans. – John Lennon",
+            "You miss 100% of the shots you don’t take. – Wayne Gretzky"
+        ];
+
+        // Step 2: Function to Generate Random Index and Retrieve Quote
+        function generateRandomQuote() {
+            // Generate a random index number
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+
+            // Step 3: Retrieve and Display the Quote
+            const quoteElement = document.getElementById('quote');
+            quoteElement.textContent = quotes[randomIndex];
+
+            // Add animation class for a brief effect
+            quoteElement.classList.add('fade-in');
+            setTimeout(() => {
+                quoteElement.classList.remove('fade-in');
+            }, 300);  // Animation duration
+        }
+    </script>
+
+</body>
+</html>
