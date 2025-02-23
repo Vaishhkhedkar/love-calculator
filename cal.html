@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-radius: 25px;
+            width: 250px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        h2 {
+            margin-top: 20px;
+            font-size: 2em;
+        }
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Love Calculator</h1>
+    <p>Enter two names to calculate your love percentage!</p>
+
+    <input type="text" id="name1" placeholder="Your name">
+    <br>
+    <input type="text" id="name2" placeholder="Partner's name">
+    <br>
+    <button onclick="calculateLove()">Calculate Love Percentage</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function calculateLove() {
+            var name1 = document.getElementById('name1').value;
+            var name2 = document.getElementById('name2').value;
+
+            if (name1 === "" || name2 === "") {
+                alert("Please enter both names!");
+                return;
+            }
+
+            name1 = name1.replace(/\s/g, '').toLowerCase();
+            name2 = name2.replace(/\s/g, '').toLowerCase();
+
+            var combinedNames = name1 + name2;
+            var lovePercentage = Math.floor(Math.random() * 100) + 1;
+
+            var resultText = "Your love percentage is " + lovePercentage + "%!";
+
+            var resultElement = document.getElementById('result');
+            resultElement.innerHTML = resultText;
+            resultElement.classList.add("fade-in");
+        }
+    </script>
+
+</body>
+</html>
